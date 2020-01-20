@@ -13,4 +13,14 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/:id", (req, res) => {
+  Accounts.getById(req.params.id)
+    .then(account => {
+      res.status(200).json(account);
+    })
+    .catch(err => {
+      res.status(500).json({ error: err });
+    });
+});
+
 module.exports = router;
