@@ -33,4 +33,15 @@ router.post("/", (req, res) => {
     });
 });
 
+router.put("/:id", (req, res) => {
+  const info = { ...req.body, id: req.params.id };
+  Accounts.updateAccount(info)
+    .then(data => {
+      res.status(200).json(data);
+    })
+    .catch(err => {
+      res.status(500).json({ error: err });
+    });
+});
+
 module.exports = router;
