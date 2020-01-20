@@ -20,9 +20,16 @@ function updateAccount({ id, name, budget }) {
     .update({ name, budget });
 }
 
+function deleteAccount(id) {
+  return db("accounts")
+    .where({ id })
+    .del();
+}
+
 module.exports = {
   get,
   getById,
   insertNewAccount,
-  updateAccount
+  updateAccount,
+  deleteAccount
 };
