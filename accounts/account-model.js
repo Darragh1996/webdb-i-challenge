@@ -10,7 +10,12 @@ function getById(id) {
     .first();
 }
 
+function insertNewAccount({ name, budget }) {
+  return db("accounts").insert({ name, budget });
+}
+
 module.exports = {
   get,
-  getById
+  getById,
+  insertNewAccount
 };

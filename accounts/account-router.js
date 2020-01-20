@@ -23,4 +23,14 @@ router.get("/:id", (req, res) => {
     });
 });
 
+router.post("/", (req, res) => {
+  Accounts.insertNewAccount(req.body)
+    .then(id => {
+      res.status(200).json(id);
+    })
+    .catch(err => {
+      res.status(500).json({ error: err });
+    });
+});
+
 module.exports = router;
